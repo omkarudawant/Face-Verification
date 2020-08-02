@@ -1,15 +1,18 @@
+
+from warnings import filterwarnings
+filterwarnings('ignore')
+
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+
+import tensorflow as tf
+tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
+
 from mtcnn import MTCNN
 from keras.models import load_model
 import numpy as np
 from PIL import Image
 import cv2
-import tensorflow as tf
-import os
-from warnings import filterwarnings
-filterwarnings('ignore')
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
-tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 
 class FaceVerification:
@@ -39,7 +42,7 @@ class FaceVerification:
         Extract a single face from a given photograph
         """
         # load image from file
-        resized = cv2.cvtColor(cv2.imread(filename), cv2.COLOR_BGR2RGB)
+        resized = cv2.cvtColor(filename, cv2.COLOR_BGR2RGB)
         # print(f'Dim Before resizing: {pixels.shape}')
 
         # Compressing image

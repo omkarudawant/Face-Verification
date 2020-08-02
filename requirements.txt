@@ -1,4 +1,6 @@
-tensorflow==1.15.2
 keras==2.2.5
+tensorflow==1.15
 opencv-python==4.3.0.36
 mtcnn==0.1.0
+fastapi==0.60.1
+uvicorn==0.11.8
