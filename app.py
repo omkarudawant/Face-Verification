@@ -10,8 +10,7 @@ import tensorflow as tf
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
 
 from mtcnn import MTCNN
-from keras.models import load_model
-from verify_images import FaceVerification
+from facial_verification import FaceVerification
 
 from io import BytesIO
 from PIL import Image
@@ -26,7 +25,11 @@ app = FastAPI()
 # Load models
 face_detector = MTCNN()
 
-model = load_model('models/facenet_v1.h5')
+s = time.time()
+tf.keras.backend.clear_session()
+model = tf.keras.models.load_model('models/facenet_v1.h5', compile=False)
+print(f'Took: {(time.time() - s)} s')
+
 face_rec = FaceVerification(face_detector, model)
 
 
