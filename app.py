@@ -16,6 +16,7 @@ from io import BytesIO
 from PIL import Image
 from numpy import array
 
+from urllib.request import urlretrieve
 from fastapi import FastAPI, File, UploadFile
 import uvicorn
 
@@ -26,11 +27,28 @@ app = FastAPI()
 face_detector = MTCNN()
 
 s = time.time()
-tf.keras.backend.clear_session()
-model = tf.keras.models.load_model('models/facenet_v1.h5', compile=False)
+model = tf.keras.models.load_model('models/facenet_v1.h5')
 print(f'Took: {(time.time() - s)} s')
 
 face_rec = FaceVerification(face_detector, model)
+
+@app.post('/predict_from_url')
+async def predict_from_url(image_1: str, image_2: str):
+    file_1 = 'image_1_'+image_1.split('/')[-1]
+    file_2 = 'image_2_'+image_2.split('/')[-1]
+
+    urlretrieve(image_1, file_1)
+    urlretrieve(image_2, file_2)
+
+    im1 = cv2.imread(file_1)
+    im2 = cv2.imread(file_2)
+
+    print(type(im1), type(im2), '-------\n')
+
+    result = face_rec.extract_and_compare(file1=im1, file2=im2)
+    os.remove(file_1)
+    os.remove(file_2)
+    return {'result': 'Matched !!!' if result == 1 else 'Not matched...'}
 
 
 @app.post('/predict')
