@@ -10,10 +10,12 @@ After cloning the project,
 
 - Install the dependencies with,  `pip install -r requirements.txt`
 
-- To verify two images,
+- To use the REST API, run the `app.py` with `uvicorn app:app` and goto `127.0.0.1:8888/docs` to try the API.
+
+- To verify two images from the standalone script,
 
 
-    `python verify_faces.py `
+    `python facial_recognition.py `
         `--model_path=PATH_TO_MODEL `
         `--image_1=PATH_of_first_image `
         `--image_2=PATH_of_second_image `
@@ -22,7 +24,7 @@ After cloning the project,
 - In case you want to verify with other distance metrics (cosine or euclidean with L2 norm),
 
 
-    `python verify_faces.py `
+    `python facial_recognition.py `
         `--model_path=PATH_TO_MODEL `
         `--image_1=PATH_of_first_image `
         `--image_2=PATH_of_second_image `
