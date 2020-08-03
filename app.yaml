@@ -1,0 +1,2 @@
+runtime: python37
+entrypoint: uvicorn app:app --port 8000
