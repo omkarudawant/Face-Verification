@@ -1,5 +1,3 @@
 .vscode/settings.json
 input/
-models/
 __pycache__/
-convert_model.py
