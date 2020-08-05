@@ -186,6 +186,8 @@ if __name__ == '__main__':
     model = tf.keras.models.load_model(args.model_path, compile=False)
 
     face_rec = FaceVerification(face_detector=detector, model=model)
+    image_1 = cv2.imread(args.image_1)
+    image_2 = cv2.imread(args.image_2)
     result = face_rec.extract_and_compare(
-        file1=args.image_1, file2=args.image_2)
+        file1=image_1, file2=image_2)
     print('Matched' if result == 1 else "Not matched")
