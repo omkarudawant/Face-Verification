@@ -1,5 +1,4 @@
-keras==2.2.5
-tensorflow==1.15.2
+tensorflow==2.3.0
 opencv-python==4.1.1.26
 pillow==7.2.0
 mtcnn==0.1.0
