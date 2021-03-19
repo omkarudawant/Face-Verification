@@ -1,6 +1,6 @@
 tensorflow>=2.4.0
 opencv-python==4.1.1.26
-pillow==7.2.0
+pillow==8.1.1
 mtcnn==0.1.0
 fastapi==0.60.1
 uvicorn==0.11.8
