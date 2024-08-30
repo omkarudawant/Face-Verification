@@ -1,5 +1,5 @@
 tensorflow>=2.4.0
-opencv-python==4.2.0.32
+opencv-python==4.8.1.78
 pillow==10.3.0
 mtcnn==0.1.0
 fastapi==0.109.1
